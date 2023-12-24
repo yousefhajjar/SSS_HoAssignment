@@ -11,8 +11,8 @@ class Car extends Model
 
     protected $fillable = ['model', 'year', 'salesperson_email'];
 
-    public function cars(){
-        return $this->hasMany(Manufacturer::class);
+    public function manufacturer(){
+        return $this->belongsTo(Manufacturer::class);
     }
 
 }
