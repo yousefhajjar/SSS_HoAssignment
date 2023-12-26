@@ -6,7 +6,6 @@
                     <div class="input-group mb-3">
                         <select id="filter_man_id" name="manufacturer_id" class="custom-select">
                             @foreach ($manufacturers as $id => $name)
-                            
                             <option {{$id == request('manufacturer_id') ? 'selected' : ''}} value={{ $id }}> {{$name}}</option>
                             @endforeach
                         </select>

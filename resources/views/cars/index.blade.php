@@ -10,7 +10,7 @@
                   <div class="d-flex align-items-center">
                     <h2 class="mb-0">All Cars</h2>
                     <div class="ml-auto">
-                      <a href="form.html" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add New</a>
+                      <a href="{{ route('cars.create') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add New</a>
                     </div>
                   </div>
                 </div>
@@ -28,22 +28,25 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @if($cars->count())
-                    @foreach ($cars as $index => $car)
-                      <tr>
-                        <th scope="row">{{ $index + 1 }}</th>
-                        <td>{{ $car->model }}</td>
-                        <td>{{ $car->year }}</td>
-                        <td>{{ $car->salesperson_email }}</td>
-                        <td>{{ $car->manufacturer->name }}</td>
-                        <td width="150">
-                          <a href="show.html" class="btn btn-sm btn-circle btn-outline-info" title="Show"><i class="fa fa-eye"></i></a>
-                          <a href="form.html" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
-                          <a href="#" class="btn btn-sm btn-circle btn-outline-danger" title="Delete" onclick="confirm('Are you sure?')"><i class="fa fa-times"></i></a>
-                        </td>
-                      </tr>
-                    @endforeach
-                  @endif
+                    @if($message = session('message'))
+                      <div class="alert alert-success">{{$message}}</div>
+                    @endif
+                    @if($cars->count())
+                      @foreach ($cars as $index => $car)
+                        <tr>
+                          <th scope="row">{{ $index + 1 }}</th>
+                          <td>{{ $car->model }}</td>
+                          <td>{{ $car->year }}</td>
+                          <td>{{ $car->salesperson_email }}</td>
+                          <td>{{ $car->manufacturer->name }}</td>
+                          <td width="150">
+                            <a href="show.html" class="btn btn-sm btn-circle btn-outline-info" title="Show"><i class="fa fa-eye"></i></a>
+                            <a href="form.html" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="btn btn-sm btn-circle btn-outline-danger" title="Delete" onclick="confirm('Are you sure?')"><i class="fa fa-times"></i></a>
+                          </td>
+                        </tr>
+                      @endforeach
+                    @endif
                   </tbody>
                 </table> 
               </div>
