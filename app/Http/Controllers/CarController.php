@@ -38,4 +38,10 @@ class CarController extends Controller
         return redirect()->route('cars.index')->with('message', 'Car added');
     }
 
+    public function show($id) 
+    {
+        $car = Car::find($id);
+        return view('cars.show', compact('car'));
+    }
+
 }
